@@ -37,7 +37,7 @@ jobs:
             curl -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d chat_id="-1001400256602" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text="Initializing environment for compiling TWRP"
             sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
             docker rmi `docker images -q`
-            sudo apt-get remove account-plugin-facebook account-plugin-flickr account-plugin-jabber account-plugin-salut account-plugin-twitter account-plugin-windows-live account-plugin-yahoo aisleriot brltty duplicity empathy empathy-common example-content gnome-accessibility-themes gnome-contacts gnome-mahjongg gnome-mines gnome-orca gnome-screensaver gnome-sudoku gnome-video-effects gnomine landscape-common libreoffice-avmedia-backend-gstreamer libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport libreoffice-style-galaxy libreoffice-style-human libreoffice-writer libsane libsane-common mcp-account-manager-uoa python3-uno rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils shotwell shotwell-common telepathy-gabble telepathy-haze telepathy-idle telepathy-indicator telepathy-logger telepathy-mission-control-5 telepathy-salut totem totem-common totem-plugins printer-driver-brlaser printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-m2300w printer-driver-ptouch printer-driver-splix
+            sudo apt-get remove landscape-common
             git config --global user.name "ZyCromerZ"
             git config --global user.email "neetroid97@gmail.com"         
             sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* 
@@ -68,11 +68,11 @@ jobs:
          run: |
               curl -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d chat_id="-1001400256602" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text="Uploading recovery image"
               cd work/out/target/product/$DEVICE
-              ZipName="[20210926]TWRP-begonia-miui-12.5.zip"
+              ZipName="[$(date +"%Y%m%d")]TWRP-begonia-3.6.0_11.zip"
               sudo zip -r9 "$ZipName" recovery.img
               ls > ls.txt
               curl -F chat_id="-1001400256602" -F document=@ls.txt -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument -F caption="Check it out @clurfe"
-              curl -F chat_id="-1001400256602" -F document=@$ZipName https://api.telegram.org/bot$BOT_TOKEN/sendDocument -F caption="Please test it @clurfe"
+              curl -F chat_id="-1001434683571" -F document=@$ZipName https://api.telegram.org/bot$BOT_TOKEN/sendDocument -F caption="Please test it @clurfe"
                curl -sL https://git.io/file-transfer | sh
                ./transfer wet $ZipName
                ./transfer wet recovery.img
