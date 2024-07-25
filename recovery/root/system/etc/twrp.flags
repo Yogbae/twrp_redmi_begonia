@@ -24,9 +24,8 @@
 /system_image     emmc     /dev/block/platform/bootdevice/by-name/system       flags=backup=1;display="System Image";flashimg=1
 /vendor_image     emmc     /dev/block/platform/bootdevice/by-name/vendor       flags=backup=1;display="Vendor Image";flashimg=1
 
-#/system_ext      ext4   /dev/block/bootdevice/by-name/system_ext              flags=display="System_ext"
-/cust             ext4   /dev/block/bootdevice/by-name/cust                    flags=display="Cust
-
+/cust             ext4     /dev/block/platform/bootdevice/by-name/cust         flags=display="Cust";backup=1
+/cust_image       emmc     /dev/block/platform/bootdevice/by-name/cust         flags=display="Cust Image";flashimg=1;backup=1
 
 /external_sd      vfat     /dev/block/mmcblk0p1  /dev/block/mmcblk0            flags=display="MicroSD";storage;wipeingui;removable;fsflags="utf8"
 /usbstorage       vfat     /dev/block/sdd1  /dev/block/sdd                     flags=display="USB Storage";storage;wipeingui;removable;fsflags="utf8"
